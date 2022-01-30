@@ -34,14 +34,14 @@ const Banner = (props) => {
 	return (
 		<div className="banner-wrapper">
 			<header>
-				<h3>Vehicle Name: {bannerData && bannerData.vehicleName}</h3>
-				<h4>Homeworld Population Sum: {bannerData && bannerData.totalPopulation.toLocaleString()}</h4>
+				<h2>Vehicle Name: {bannerData && bannerData.vehicleName}</h2>
+				<h2>Homeworld Population Sum: {bannerData && bannerData.totalPopulation.toLocaleString()}</h2>
 			</header>
 			<div className="table-wrapper">
 				<table style={{ width: "100%" }}>
 					<tr>
-						<th>Pilot</th>
-						<th>Home Planet </th>
+						<th>Pilots</th>
+						<th>Home Planets </th>
 						<th>Population </th>
 					</tr>
 
