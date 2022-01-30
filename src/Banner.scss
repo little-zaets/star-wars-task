@@ -1,0 +1,24 @@
+
+.banner-wrapper {
+	background-color: transparent;
+	width: 75%;
+	
+	header{
+		color: white;
+		text-align: center;
+		padding-top: 0.5rem;
+		
+		& > h3, h4 {
+			margin: 0;
+			font-weight: 300;
+		}
+	}
+		
+	& > .table-wrapper {
+		padding: 1rem 1rem;
+		
+		& > table {
+			background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%,rgba(248, 246, 246, 0.3) 50%,rgba(0, 0, 0, 0.3) 100%);
+		}
+	}
+}

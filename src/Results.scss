@@ -1,0 +1,27 @@
+
+.results {
+	background: transparent;
+	width: 75%;
+
+	& > .table-wrapper {
+		background: linear-gradient(to right, rgba(0, 0, 0, 0.2) 35%,rgba(248, 246, 246, 0.3) 50%,rgba(0, 0, 0, 0.3) 65%);
+		
+		& > table {
+			width: 100%;
+			border: 1px solid white;
+			border-collapse: collapse;
+			
+			& > tr {
+				border: white;
+				
+				& > th, td {
+					border: 1px solid white;
+					border-top: unset;
+				  	padding: 5px;
+				  	text-align: left;
+					padding: 0.5rem 0.5rem;
+				}
+			}
+		}
+	}
+}
