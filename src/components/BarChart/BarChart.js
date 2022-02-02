@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {isContains} from './utils';
+import {isContains} from '../../utils';
 import Chart from './Chart';
 import './BarChart.scss';
 

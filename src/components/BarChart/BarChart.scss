@@ -1,0 +1,23 @@
+@use '../../index.scss' as *;
+
+.chart-wrapper {
+	background-color: transparent;
+	height: 100%;
+	
+	svg {
+		border: 1px solid $cream-white;
+		background: linear-gradient(to right, rgba(0, 0, 0, 0.2) 0%,rgba($cream-white, 0.35) 50%,rgba(0, 0, 0, 0.2) 100%);
+		margin-bottom: 1.5rem;
+		
+		& > g {
+			text {
+				fill: $cream-white;
+				text-anchor: middle;
+			}
+		
+			rect {
+				fill: black;
+			}
+		}	
+	}
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Title.scss';
-import {ReactComponent as Logo} from './resources/star-wars-logo.svg';
+import {ReactComponent as Logo} from '../../resources/star-wars-logo.svg';
 
 const Title = () => {
 	return (

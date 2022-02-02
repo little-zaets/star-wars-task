@@ -5,6 +5,8 @@
 	src: url('https://cdn.loom.com/assets/fonts/circular/CircularXXWeb-Book-cd7d2bcec649b1243839a15d5eb8f0a3.woff2') format('woff2');
 }
 
+$cream-white: #f8f6f6;
+
 body {
 	margin: 0;
   	font-family: 'Circular-Loom';
@@ -12,19 +14,19 @@ body {
 }
 
 .table-wrapper {
-	color: rgb(248, 246, 246);
+	color: $cream-white;
 	padding: 0rem 0rem 1rem;
 }
 
 table {
 	width: 100%;
-	border: 1px solid rgb(248, 246, 246);
+	border: 1px solid $cream-white;
 	border-collapse: collapse;
 	
 		& > tr {
 		
 		& > th, td {
-			border: 1px solid rgb(248, 246, 246);
+			border: 1px solid $cream-white;
 			border-top: unset;
 			padding: 5px;
 			text-align: left;

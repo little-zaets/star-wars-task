@@ -1,3 +1,5 @@
+@use '../../index.scss' as *;
+
 #root {
 	background-image: url(https://i.giphy.com/media/TxVVB6PfWMjE4/200.webp);
 	
@@ -7,7 +9,7 @@
 		justify-content: center;
 		
 		.icon-cog {
-			color: rgb(248, 246, 246);
+			color: $cream-white;
 			margin-top: -10rem;
 			font-size: 7rem;
 			height: 100vh;

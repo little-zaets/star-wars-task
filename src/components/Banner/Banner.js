@@ -46,13 +46,11 @@ const Banner = (props) => {
 					</tr>
 
 					{pilots && pilots.map(pilot =>
-						<>
-							<tr>
+							<tr key={pilot.pilotName}>
 								<td>{pilot.pilotName} </td>
 								<td>{pilot.homeWorld.homeWorldName}</td>
 								<td>{pilot.homeWorld.population.toLocaleString()} </td>
 							</tr>
-						</>
 					)}
 
 				</table>

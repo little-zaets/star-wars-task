@@ -16,12 +16,12 @@ const Chart = ({ homeWorlds }) => {
 			height={height}
 			preserveAspectRatio="xMidYMax meet"
 		>
+		
 			{homeWorlds && homeWorlds.map((data, index) => {
 				const barHeight = populations.find(currPopulation => populations.indexOf(currPopulation) === index);
 				return (
-					<g className="bar">
+					<g className="bar" key={data.homeWorldName}>
 						<Bar
-							key={data.homeWorldName}
 							x={index * (barWidth + barMargin)}
 							y={height - (barHeight + 10)}
 							width={barWidth}
@@ -32,6 +32,7 @@ const Chart = ({ homeWorlds }) => {
 					</g>
 				)
 			})}
+			
 		</svg>
 	)
 }

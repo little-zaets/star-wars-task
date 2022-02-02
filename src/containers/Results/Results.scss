@@ -1,19 +1,20 @@
+@use '../../index.scss' as *;
 
 .results {
 	background: transparent;
 
 	& > .table-wrapper {
-		background: linear-gradient(to right, rgba(0, 0, 0, 0.2) 45%,rgba(248, 246, 246, 0.3) 50%,rgba(0, 0, 0, 0.3) 60%);
+		background: linear-gradient(to right, rgba(0, 0, 0, 0.2) 45%,rgba($cream-white, 0.3) 50%,rgba(0, 0, 0, 0.3) 60%);
 		width: 35rem;
 		
 		& > table {
 			width: 100%;
-			border: 1px solid rgb(248, 246, 246);
+			border: 1px solid $cream-white;
 			border-collapse: collapse;
 			
 			& > tr {	
 				& > th, td {
-					border: 1px solid rgb(248, 246, 246);
+					border: 1px solid $cream-white;
 					border-top: unset;
 				  	padding: 5px;
 				  	text-align: left;

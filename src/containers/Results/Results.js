@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog } from '@fortawesome/free-solid-svg-icons'
 import { getVehiclesWithPilots, getHomeworldPopulation } from './resultsHelper';
-import Banner from './Banner';
-import BarChart from './BarChart';
+import Banner from '../../components/Banner/Banner';
+import BarChart from '../../components/BarChart/BarChart';
 import './Results.scss';
 
 const Results = () => {
