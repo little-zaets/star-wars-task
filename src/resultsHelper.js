@@ -1,6 +1,5 @@
 
-//get all vehiles with pilots
-export const getVehicleNames = async () => {
+export const getVehiclesWithPilots = async () => {
 	let url = 'https://swapi.py4e.com/api/vehicles/';
 	const fetchedVehicles = [];
 	try {
@@ -16,7 +15,6 @@ export const getVehicleNames = async () => {
 	} catch (err) {
 		console.log(err);
 	}
-
 	return fetchedVehicles;
 }
 
@@ -25,7 +23,7 @@ const getPilot = async (pilotUrl) => {
 	if (data.status !== 200) {
 		throw new Error('Something went wrong');
 	}
-	
+
 	const pilotData = await data.json();
 	const { name, homeworld } = pilotData;
 	const pilot =
@@ -42,7 +40,7 @@ const getHomeworld = async (pilotData) => {
 		if (response.status !== 200) {
 			throw new Error('Something went wrong');
 		}
-		
+
 		const homeWorldData = await response.json();
 		const population = !isNaN(homeWorldData.population) && parseInt(homeWorldData.population, 10);
 		const homeWorld = {
@@ -62,7 +60,7 @@ export const getHomeworldPopulation = async (vehicleData) => {
 		const pilots = await Promise.all(item.pilots.map(pilot =>
 			getPilot(pilot)
 		));
-		
+
 		const homeWorlds = await Promise.all(pilots.filter(pilot => pilot.homeWorld.population !== false).map(pilot => {
 			return pilot.homeWorld;
 		}));
@@ -77,6 +75,7 @@ export const getHomeworldPopulation = async (vehicleData) => {
 		}
 		vehicles.push(vehicle);
 	}
+
 	vehicles.sort((a, b) =>
 		parseInt(b.totalPopulation) - parseInt(a.totalPopulation)
 	);

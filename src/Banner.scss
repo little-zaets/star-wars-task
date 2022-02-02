@@ -1,22 +1,21 @@
 
 .banner-wrapper {
 	background-color: transparent;
-	width: 75%;
+	width: 35rem;
 	
 	header{
-		color: white;
+		color: rgb(248, 246, 246);
 		text-align: center;
 		padding-top: 0.5rem;
+		margin: 0rem 0rem 0.5rem;
 		
 		& > h2 {
-			margin: 0 0 0.5rem 0;
+			margin: 0;
 			font-weight: 300;
 		}
 	}
 		
 	& > .table-wrapper {
-		padding: 1rem 1rem;
-		
 		& > table {
 			background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%,rgba(248, 246, 246, 0.3) 50%,rgba(0, 0, 0, 0.3) 100%);
 		}

@@ -1,21 +1,19 @@
 
 .results {
 	background: transparent;
-	width: 75%;
 
 	& > .table-wrapper {
-		background: linear-gradient(to right, rgba(0, 0, 0, 0.2) 35%,rgba(248, 246, 246, 0.3) 50%,rgba(0, 0, 0, 0.3) 65%);
+		background: linear-gradient(to right, rgba(0, 0, 0, 0.2) 45%,rgba(248, 246, 246, 0.3) 50%,rgba(0, 0, 0, 0.3) 60%);
+		width: 35rem;
 		
 		& > table {
 			width: 100%;
-			border: 1px solid white;
+			border: 1px solid rgb(248, 246, 246);
 			border-collapse: collapse;
 			
-			& > tr {
-				border: white;
-				
+			& > tr {	
 				& > th, td {
-					border: 1px solid white;
+					border: 1px solid rgb(248, 246, 246);
 					border-top: unset;
 				  	padding: 5px;
 				  	text-align: left;

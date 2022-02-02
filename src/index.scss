@@ -13,19 +13,18 @@ body {
 
 .table-wrapper {
 	color: rgb(248, 246, 246);
-	padding: 0.5rem 1rem;
+	padding: 0rem 0rem 1rem;
 }
 
 table {
 	width: 100%;
-	border: 1px solid white;
+	border: 1px solid rgb(248, 246, 246);
 	border-collapse: collapse;
 	
 		& > tr {
-			border: white;
 		
 		& > th, td {
-			border: 1px solid white;
+			border: 1px solid rgb(248, 246, 246);
 			border-top: unset;
 			padding: 5px;
 			text-align: left;
