@@ -11,10 +11,10 @@ on:
 jobs:
   notify_webhook:
     runs-on: ubuntu-latest
+    env: 
+        WEBHOOK_TEST: ${{ secrets.WEBHOOK_TEST }}
     steps:
       - name: Check if changes were requested  
-        env: 
-              WEBHOOK_TEST: ${{ secrets.WEBHOOK_TEST }}
         # if: github.event.review.state == 'changes_requested'
         run: |
           curl -X POST \
