@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check if changes were requested
-        if: github.event.review.state == 'changes_requested'
+        # if: github.event.review.state == 'changes_requested'
         run: |
           curl -X POST "${{ env.WEBHOOK_PERSONAL }}-BLA" \
             -H "Content-Type: application/json" \
