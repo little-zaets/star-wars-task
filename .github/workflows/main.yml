@@ -11,6 +11,7 @@ on:
 jobs:
   notify_webhook:
     runs-on: ubuntu-latest
+    environment: automation
     env: 
         WEBHOOK_TEST: ${{ secrets.WEBHOOK_TEST }}
     steps:
