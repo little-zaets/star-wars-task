@@ -12,7 +12,7 @@ jobs:
       - name: Check if changes were requested
         if: github.event.review.state == 'changes_requested'
         run: |
-          curl -X POST "${{ vars.WEBHOOK_PERSONAL }}" \
+          curl -X POST "${{ env.WEBHOOK_PERSONAL }}" \
             -H "Content-Type: application/json" \
             -H "User-Agent: GitHub-Actions" \
             -d '{
