@@ -17,9 +17,10 @@ jobs:
               WEBHOOK_TEST: ${{ secrets.WEBHOOK_TEST }}
         # if: github.event.review.state == 'changes_requested'
         run: |
-          curl -X POST "${WEBHOOK_TEST}-BLA" \
+          curl -X POST \
             -H "Content-Type: application/json" \
             -H "User-Agent: GitHub-Actions" \
+            "${WEBHOOK_TEST}-BLA" \
             -d '{
               "repository": "${{ github.repository }}",
               "action": "${{ github.event.action }}",
