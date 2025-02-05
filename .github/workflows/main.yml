@@ -15,7 +15,7 @@ jobs:
     env: 
         WEBHOOK_TEST: ${{ secrets.WEBHOOK_TEST }}
     steps:
-      - name: Check if changes were requested  
+      - name: Check if changes were requested 
         # if: github.event.review.state == 'changes_requested'
         run: |
           curl -X POST "${WEBHOOK_TEST}-BLA" \
