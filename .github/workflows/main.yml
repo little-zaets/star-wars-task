@@ -1,0 +1,24 @@
+name: PR Changes Requested
+
+on:
+  pull_request_review:
+    types:
+      - submitted
+
+jobs:
+  notify_webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if changes were requested
+        if: github.event.review.state == 'changes_requested'
+        run: |
+          curl -X POST "${{ vars.WEBHOOK_PERSONAL }}" \
+            -H "Content-Type: application/json" \
+            -H "User-Agent: GitHub-Actions" \
+            -d '{
+              "repository": "${{ github.repository }}",
+              "action": "${{ github.event.action }}",
+              "pull_request": "${{ github.event.pull_request.html_url }}",
+              "review": "${{ github.event.review.html_url }}",
+              "sender": "${{ github.actor }}"
+            }'
