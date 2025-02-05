@@ -1,2 +1,2 @@
 TESTING ACTIONS
-new entry
+New entry
