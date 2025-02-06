@@ -35,6 +35,6 @@ jobs:
               "action": "${{ github.event.action }}",
               "pull_request": "${{ github.event.pull_request.html_url }}",
               "review": "${{ github.event.review.html_url }}",
-              "review_payload": "${{ github.event.review }}",
+              "review_state": "${{ github.event.review.state }}",
               "sender": "${{ github.actor }}"
             }'
