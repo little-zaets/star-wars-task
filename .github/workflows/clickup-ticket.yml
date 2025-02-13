@@ -1,0 +1,25 @@
+name: Has Associated ClickUp Ticket
+
+on:
+  pull_request:
+    types: [ 'opened', 'edited', 'reopened', 'synchronize' ]
+
+jobs:
+  title:
+    name: ticket check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check for ticket
+        uses: neofinancial/ticket-check-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ticketLink: 'https://app.clickup.com/t/%ticketNumber%'
+          ticketPrefix: '#'
+          titleFormat: '%title%'
+          titleRegex: 'DO_NOT_MATCH'
+          branchRegex: 'DO_NOT_MATCH'
+          bodyRegex: '#(?<ticketNumber>[a-zA-Z0-9]+)'
+          bodyRegexFlags: "ig"
+          bodyURLRegex: 'https:\/\/(app.clickup.com/t)\/(?<ticketNumber>[a-zA-Z0-9]+))'
+          exemptUsers: "dependabot"
