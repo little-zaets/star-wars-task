@@ -30,7 +30,7 @@ jobs:
               "repository": "${{ github.repository }}",
               "action": "${{ github.event.action }}",
                "pull_request": ${{ toJson(github.event.pull_request) }},
-               "review": "${{ github.event.review }}",
+               "review": "${{ toJson(github.event.review) }}",
                "review_state": "${{ github.event.review.state }}",
                "comment": "${{ github.event.comment.body }}",
                "sender": "${{ github.actor }}"
