@@ -6,6 +6,15 @@ on:
   issue_comment:
 
 jobs:
+printJob:    
+    name: Print event
+    runs-on: ubuntu-latest
+    steps:
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: |
+        echo "$GITHUB_CONTEXT"
   notify_webhook:
     runs-on: ubuntu-latest
     environment: automation
@@ -17,14 +26,13 @@ jobs:
           curl -X POST "${WEBHOOK_TEST}" \
             -H "Content-Type: application/json" \
             -H "User-Agent: GitHub-Actions" \
-            -d @- <<EOF
-{
-  "repository": "${{ github.repository }}",
-  "action": "${{ github.event.action }}",
-  "pull_request": ${{ toJson(github.event.pull_request) }},
-  "review": "${{ github.event.review.html_url }}",
-  "review_state": "${{ github.event.review.state }}",
-  "comment": "${{ github.event.comment.body }}",
-  "sender": "${{ github.actor }}"
-}
-EOF
+            -d '{
+              "repository": "${{ github.repository }}",
+              "action": "${{ github.event.action }}",
+               "pull_request": ${{ toJson(github.event.pull_request) }},
+               "review": "${{ github.event.review.html_url }}",
+               "review_state": "${{ github.event.review.state }}",
+               "comment": "${{ github.event.comment.body }}",
+               "sender": "${{ github.actor }}"
+            }'
+
