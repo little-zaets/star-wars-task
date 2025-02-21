@@ -3,7 +3,8 @@ name: PR Changes Requested
 on:
   pull_request_review:
     types:
-      - submitted
+      # - submitted
+      - closed
   # push:
   #   branches:
   #     - master
