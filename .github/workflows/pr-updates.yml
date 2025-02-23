@@ -15,23 +15,4 @@ jobs:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: |
         echo "$GITHUB_CONTEXT"
-  notify_webhook:
-    runs-on: ubuntu-latest
-    environment: automation
-    env: 
-      WEBHOOK_TEST: ${{ secrets.WEBHOOK_TEST }}
-    steps:
-      - name: Send Webhook Notification
-        run: |
-          curl -X POST "${WEBHOOK_TEST}" \
-            -H "Content-Type: application/json" \
-            -H "User-Agent: GitHub-Actions" \
-            -d '{
-              "repository": "${{ github.repository }}",
-              "action": "${{ github.event.action }}",
-               "pull_request": ${{ toJson(github.event.pull_request) }},
-               "event": "${{ github.event }}",
-               "review_state": "${{ github.event.review.state }}",
-               "comment": "${{ github.event.comment.body }}",
-               "sender": "${{ github.actor }}"
-            }'
+  
