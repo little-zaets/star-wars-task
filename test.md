@@ -1,3 +1,3 @@
 TESTING ACTIONS
 New entry
-new_test
+new_test   test
