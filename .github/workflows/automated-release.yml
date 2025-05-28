@@ -1,0 +1,72 @@
+name: Auto Release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup GitHub CLI
+      uses: cli/cli-action@v2
+
+    - name: Get latest tag
+      id: get_tag
+      run: |
+        latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+        echo "Latest tag: $latest_tag"
+        echo "tag=$latest_tag" >> $GITHUB_OUTPUT
+
+    - name: Bump patch version
+      id: bump_tag
+      run: |
+        old_tag="${{ steps.get_tag.outputs.tag }}"
+        base_version=$(echo "$old_tag" | sed 's/^v//')
+        IFS='.' read -r major minor patch <<< "$base_version"
+        new_patch=$((patch + 1))
+        new_tag="v$major.$minor.$new_patch"
+        echo "New tag: $new_tag"
+        echo "new_tag=$new_tag" >> $GITHUB_OUTPUT
+
+    - name: Get PRs merged since last tag
+      id: changelog
+      run: |
+        gh auth setup-git
+        old_tag="${{ steps.get_tag.outputs.tag }}"
+        new_tag="${{ steps.bump_tag.outputs.new_tag }}"
+        repo="${{ github.repository }}"
+        prs=$(gh pr list --search "merged:>${old_tag}" --state merged --limit 100 --json number,title,author,url,mergedAt,baseRefName,headRefName)
+
+        # Fallback if gh pr list fails
+        if [ -z "$prs" ]; then
+          prs=$(git log ${old_tag}..HEAD --merges --pretty=format:"%s")
+        fi
+
+        echo "$prs" > pr_list.json
+
+        echo "Formatting PRs"
+        formatted_notes=""
+        jq -r '.[] | "- [\(.headRefName | sub(".*/"; ""))] \(.title) by @\(.author.login) in #\(.number)"' pr_list.json > changes.txt
+
+        cat changes.txt
+
+        echo "What's Changed" > release_notes.md
+        cat changes.txt >> release_notes.md
+        echo "" >> release_notes.md
+        echo "Full Changelog: $old_tag...$new_tag" >> release_notes.md
+
+    - name: Create release
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        new_tag="${{ steps.bump_tag.outputs.new_tag }}"
+        git tag "$new_tag"
+        git push origin "$new_tag"
+        gh release create "$new_tag" -F release_notes.md --title "$new_tag"
